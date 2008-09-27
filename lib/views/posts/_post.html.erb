@@ -1,0 +1,16 @@
+<div class="post">
+  <div class="date">
+    <%= post.created_at.strftime("%d-%m-%Y %H:%I") %>
+  </div>
+
+  <div class="user">
+    <%= image_tag(avatar_url_for post.user, :size => "50") %>
+    <span class="name"><%= link_to h(post.user.name), post.user %></span>
+  </div>
+
+  <div class="body">
+    <%= textilize h(post.body) %>
+  </div>
+
+  <div class="clear"></div>
+</div>

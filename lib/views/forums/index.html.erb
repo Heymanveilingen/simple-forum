@@ -1,0 +1,28 @@
+<div id="forum">
+  <h1>Foros</h1>
+
+  <table class="forum">
+    <thead>
+    <tr>
+      <td>Foro</td>
+      <td>Temas</td>
+      <td>Mensajes</td>
+      <td>Último Mensaje</td>
+    </tr>
+    </thead>
+    <tbody>
+    <% for forum in @forums -%>
+    <tr>
+      <td><%= link_to h(forum.title), forum %></td>
+      <td><%= forum.topics.count %></td>
+      <td><%= forum.posts_count %></td>
+      <td>
+        <%= forum.last_post_at.strftime("%d-%m-%Y %H:%I") if forum.last_post_at %>
+        <%= "por" if forum.last_poster %>
+        <%= link_to(h(forum.last_poster.name), user_path(forum.last_poster)) if forum.last_poster %>
+      </td>
+    </tr>
+    <% end -%>
+    </tbody>
+  </table>
+</div>

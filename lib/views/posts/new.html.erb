@@ -1,0 +1,17 @@
+<div id="forum">
+  <h1>Responder en <%= h @topic.title %></h1>
+
+  <% form_for @post, :url => forum_topic_posts_path(@forum, @topic), :method => :post do |form| %>
+  <p>
+    <h2>Mensaje</h2>
+
+    <% fields_for ForumPost.new do |post| %>
+    <%= post.text_area :body %>
+    <% end %>
+  </p>
+
+  <p>
+    <%= form.submit "Enviar" %>
+  </p>
+  <% end %>
+</div>

@@ -1,0 +1,45 @@
+<div id="forum">
+  <h1><%= link_to "Foros", forums_path %> &gt; <%= h @forum.title %></h1>
+
+  <table class="forum">
+    <thead>
+    <tr>
+      <td>Tema / Iniciado por</td>
+      <td>Último Mensaje</td>
+      <td>Respuestas</td>
+      <!--
+      <td>Vistas</td>
+      -->
+    </tr>
+    </thead>
+    <tbody>
+    <% for topic in @topics -%>
+    <tr>
+      <td>
+        <%= link_to h(topic.title), forum_topic_path(@forum, topic) %>
+        /
+        <%= link_to h(topic.user.name), topic.user %>
+      </td>
+      <td>
+        <%= topic.last_post_at.strftime("%d-%m-%Y %H:%I") if topic.last_post_at %>
+        <%= "por" if topic.last_post_by %>
+        <%= link_to(h(topic.last_poster.name), topic.last_poster) if topic.last_poster %>
+        &nbsp;
+      </td>
+      <td><%= topic.posts.count %></td>
+      <!--
+      <td>TODO</td>
+      -->
+    </tr>
+    <% end -%>
+    </tbody>
+    <tfoot>
+    <tr>
+      <td colspan="4">
+        <%= will_paginate @topics %>
+      </td>
+    </tfoor>
+  </table>
+
+  <%= link_to "Iniciar Nuevo Tema", new_forum_topic_path(@forum) %>
+</div>

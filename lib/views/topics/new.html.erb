@@ -1,0 +1,25 @@
+<div id="forum">
+  <h1>Nuevo Tema en <%= h @forum.title %></h1>
+
+  <% form_for [@topic] do |form| %>
+  <p>
+    <h2>Título</h2>
+
+    <%= form.text_field :title %>
+  </p>
+
+  <p>
+    <h2>Mensaje</h2>
+
+    <% fields_for ForumPost.new do |post| %>
+    <%= post.text_area :body %>
+    <% end %>
+  </p>
+
+  <p>
+    <%= form.submit "Enviar" %>
+    o
+    <%= link_to "Volver", @forum %>
+  </p>
+  <% end %>
+</div>

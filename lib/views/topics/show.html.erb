@@ -1,0 +1,16 @@
+<div id="forum">
+  <h1><%= link_to "Foros", forums_path %> &gt; <%= link_to h(@forum.title), forum_path(@forum) %><h1>
+
+  <h2>Tema : <%= @topic.title %></h2>
+
+  <% div_for @topic do %>
+    <%= render :partial => 'posts/post', :collection => @posts %>
+    <div class="clear"></div>
+  <% end %>
+
+  <div class="pages">
+    <%= will_paginate @posts %>
+  </div>
+
+  <%= link_to "Responder", new_forum_topic_post_path(@forum, @topic) %>
+</div>
