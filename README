@@ -13,11 +13,11 @@ Dependencies
  
 Example
 =======
+  The first thing you have to do is install the plugin :
+    # ./script/plugin install git://github.com/Gazer/simple-forum.git
 
-  The first thing you have to do is create the migration file for your project :
+  Next you have to do is create the migration file for your project and migrate your database :
     # ./script/generate simple_forum_migration [optinal name]
-
-  Next step is to migrate your database :
     # rake db:migrate
 
   And the last step is add routes to your routes.rb file:
