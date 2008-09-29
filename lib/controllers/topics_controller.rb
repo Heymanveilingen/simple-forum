@@ -15,7 +15,9 @@ class TopicsController < ActionController::Base
     params[:forum_post].merge! :user_id => current_user.id
 
     @topic = @forum.topics.create! params[:forum_topic]
-    @topic.posts.create! params[:forum_post]
+    post = @topic.posts.create! params[:forum_post]
+
+    forum_session.add_post(post) if post
 
     redirect_to @forum
   end
@@ -34,4 +36,9 @@ class TopicsController < ActionController::Base
             }.merge(options))
             
   end
+
+  def forum_session
+    @forum_session ||= ForumSession.new(session)
+  end
+  helper_method :forum_session
 end

@@ -12,5 +12,8 @@
     <%= textilize h(post.body) %>
   </div>
 
+  <% if forum_session.can_edit_post? post %>
+    <p><%= link_to "Editar", edit_forum_topic_post_path(@forum, @topic, post) %></p>
+  <% end %>
   <div class="clear"></div>
 </div>
