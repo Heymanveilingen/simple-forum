@@ -13,7 +13,14 @@
     <tbody>
     <% for forum in @forums -%>
     <tr>
-      <td><%= link_to h(forum.title), forum %></td>
+      <td>
+        <span class="title">
+          <%= link_to h(forum.title), forum %>
+        </span>
+        <span class="description">
+          <%= h forum.description %>
+        </span>
+      </td>
       <td><%= forum.topics.count %></td>
       <td><%= forum.posts_count %></td>
       <td>

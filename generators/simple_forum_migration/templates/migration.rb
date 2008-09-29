@@ -2,6 +2,7 @@ class <%= class_name %> < ActiveRecord::Migration
   def self.up
     create_table "forums", :force => true do |t|
       t.string :title, :limit => 100, :null => false
+      t.string :description, :limit => 255, :null => true
       t.integer :last_post_by
       t.datetime :last_post_at, :created_at
     end
