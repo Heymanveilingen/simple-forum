@@ -7,7 +7,7 @@ SimpleForum
 Dependencies
 ============
  * will_paginate need to be installed
- * A User model with at lesat email and name attributes are required
+ * A User model with at least email and name attributes are required
  * A current_user method/helper should be provided (RESTful Authentication compatible)
  * RedCloth
  
