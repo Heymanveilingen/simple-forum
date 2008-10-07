@@ -34,9 +34,6 @@ class TopicsController < ActionController::Base
   def avatar_url_for(user, options = {})
     return "" unless user.respond_to? "email"
 
-    url_for({ :gravatar_id => Digest::MD5.hexdigest(user.email), :host => 'www.gravatar.com',
-              :protocol => 'http://', :only_path => false, :controller => 'avatar.php'
-            }.merge(options))
-            
+    %(http://www.gravatar.com/avatar.php?gravatar_id=#{Digest::MD5.hexdigest(user.email)})
   end
 end
