@@ -28,6 +28,12 @@ class PostsController < ActionController::Base
     redirect_to forum_topic_path(@forum, @topic)
   end
 
+  def destroy
+    @post = @topic.posts.find params[:id]
+    @post.destroy if @post && @post.user == current_user
+    redirect_to forum_topic_path(@forum, @topic)
+  end
+
   private
   def setup_forum_and_topic
     @forum = Forum.find(params[:forum_id])
