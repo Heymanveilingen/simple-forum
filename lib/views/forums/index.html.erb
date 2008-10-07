@@ -24,9 +24,7 @@
       <td><%= forum.topics.count %></td>
       <td><%= forum.posts_count %></td>
       <td>
-        <%= forum.last_post_at.strftime("%d-%m-%Y %H:%M") if forum.last_post_at %>
-        <%= "por" if forum.last_poster %>
-        <%= link_to(h(forum.last_poster.name), user_path(forum.last_poster)) if forum.last_poster %>
+        <%= last_post_info forum %>
       </td>
     </tr>
     <% end -%>

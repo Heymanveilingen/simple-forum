@@ -23,10 +23,7 @@
         <%= link_to h(topic.user.name), topic.user %>
       </td>
       <td>
-        <%= topic.last_post_at.strftime("%d-%m-%Y %H:%M") if topic.last_post_at %>
-        <%= "por" if topic.last_post_by %>
-        <%= link_to(h(topic.last_poster.name), topic.last_poster) if topic.last_poster %>
-        &nbsp;
+        <%= last_post_info topic %>
       </td>
       <td><%= topic.posts.count %></td>
       <!--
