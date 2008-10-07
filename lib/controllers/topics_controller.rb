@@ -1,4 +1,7 @@
 class TopicsController < ActionController::Base
+  helper ForumHelper
+  include ForumHelper
+
   before_filter :setup_forum
 
   def show
@@ -36,9 +39,4 @@ class TopicsController < ActionController::Base
             }.merge(options))
             
   end
-
-  def forum_session
-    @forum_session ||= ForumSession.new(session)
-  end
-  helper_method :forum_session
 end

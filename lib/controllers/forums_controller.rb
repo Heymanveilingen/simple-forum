@@ -1,4 +1,7 @@
 class ForumsController < ActionController::Base
+  helper ForumHelper
+  include ForumHelper
+
   def index
     @forums = Forum.all
   end

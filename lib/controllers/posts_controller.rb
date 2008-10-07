@@ -1,4 +1,7 @@
 class PostsController < ActionController::Base
+  helper ForumHelper
+  include ForumHelper
+
   before_filter :setup_forum_and_topic
   before_filter :authorize, :only => [:edit, :update]
 
@@ -32,14 +35,10 @@ class PostsController < ActionController::Base
   end
 
   def authorize
-    unless forum_session.can_edit_post? ForumPost.find(params[:id])
-      flash[:error] = "Ya no puedes editar este comentario."
+    post = ForumPost.find(params[:id])
+    unless post.user == current_user && forum_session.can_edit_post?(post)
+      flash[:error] = "No puedes editar este comentario."
       redirect_to forum_topic_path(@forum, @topic)
     end
   end
-
-  def forum_session
-    @forum_session ||= ForumSession.new(session)
-  end
-  helper_method :forum_session
 end
