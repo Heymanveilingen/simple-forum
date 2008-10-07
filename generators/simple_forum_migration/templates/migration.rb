@@ -21,11 +21,17 @@ class <%= class_name %> < ActiveRecord::Migration
       t.references :user
       t.timestamps
     end
+
+    create_table :forums_users, :force => true, :id => false do |t|
+      t.references :user
+      t.references :forum
+    end
   end
 
   def self.down
     drop_table :forums
     drop_table :forum_topics
     drop_table :forum_posts
+    drop_table :forums_moderators
   end
 end

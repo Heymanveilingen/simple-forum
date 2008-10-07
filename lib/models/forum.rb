@@ -4,6 +4,7 @@ class Forum < ActiveRecord::Base
 
   has_many :topics, :class_name => "ForumTopic", :foreign_key => "forum_id", :order => "last_post_at DESC, created_at DESC"
   belongs_to :last_poster, :class_name => "User", :foreign_key => "last_post_by"
+  has_and_belongs_to_many :moderators, :class_name => "User", :join_table => "forums_users", :foreign_key => "user_id"
 
   # TODO : add counter cache
   def posts_count
