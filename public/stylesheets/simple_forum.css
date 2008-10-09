@@ -12,6 +12,16 @@
 	border-bottom: 1px dotted #464646;
 }
 
+.forum_topic .post ul {
+	float: right;
+	list-style: none;
+	margin-top: -1.5em;
+}
+
+.forum_topic .post ul li {
+	display: inline;
+}
+
 .forum_topic .post .date {
 	background: #DEDEDE;
 	font-weight: bold;
@@ -34,6 +44,10 @@
 	padding-left: 10px;
 }
 
+.forum_topic .post .body p img {
+	float: none;
+}
+
 .forum_topic .post .user img,
 .forum_topic .post .user .name {
 	float: none;
@@ -49,9 +63,18 @@ table.forum tbody td {
 	border-bottom: 1px dotted #464646;
 }
 
+#forum h2 {
+	font-weight: bold;
+	padding: 4px;
+	font-size: 14px;
+}
 
 #forum .title {
   display: block;
+}
+
+#forum .new_posts{
+  font-weight: bold;
 }
 
 #forum .description {
@@ -61,8 +84,3 @@ table.forum tbody td {
   font-style: italic;
 }
 
-#forum h2 {
-	font-weight: bold;
-	padding: 4px;
-	font-size: 14px;
-}
