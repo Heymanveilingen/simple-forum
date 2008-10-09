@@ -34,6 +34,6 @@ class TopicsController < ActionController::Base
   def avatar_url_for(user, options = {})
     return "" unless user.respond_to? "email"
 
-    %(http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(user.email)}.jpg)
+    %(http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(user.email)}.jpg?s=#{options[:size] || 80})
   end
 end
