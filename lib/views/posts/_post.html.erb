@@ -1,6 +1,17 @@
 <div class="post">
   <div class="date">
     <%= post.created_at.strftime("%d-%m-%Y %H:%M") %>
+
+    <ul>
+      <% if forum_session.can_edit_post? post -%>
+      <li><%= link_to "Editar", edit_forum_topic_post_path(@forum, @topic, post) %></li>
+      <% end -%>
+      <% moderator_actions_for @forum do -%>
+      <li>
+      <%= link_to "Eliminar", forum_topic_post_path(@forum, @topic, post), :confirm => "Seguro?", :method => :delete %>
+      </li>
+      <% end %>
+    </ul>
   </div>
 
   <div class="user">
@@ -12,11 +23,5 @@
     <%= textilize h(post.body) %>
   </div>
 
-  <% if forum_session.can_edit_post? post %>
-    <p><%= link_to "Editar", edit_forum_topic_post_path(@forum, @topic, post) %></p>
-  <% end %>
-  <% moderator_actions_for @forum do %>
-    <p><%= link_to "Eliminar", forum_topic_post_path(@forum, @topic, post), :confirm => "Seguro?", :method => :delete %></p>
-  <% end %>
   <div class="clear"></div>
 </div>
