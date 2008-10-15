@@ -29,11 +29,4 @@ class TopicsController < ActionController::Base
   def setup_forum
     @forum = Forum.find(params[:forum_id])
   end
-
-  helper_method :avatar_url_for
-  def avatar_url_for(user, options = {})
-    return "" unless user.respond_to? "email"
-
-    %(http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(user.email)}.jpg?s=#{options[:size] || 80})
-  end
 end

@@ -16,4 +16,10 @@ module ForumHelper
     s << link_to(h(object.last_poster.name), object.last_poster) if object.last_poster
     s * "&nbsp;"
   end
+
+  def avatar_url_for(user, options = {})
+    return "" unless user.respond_to? "email"
+
+    %(http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(user.email)}.jpg?s=#{options[:size] || 80})
+  end
 end
