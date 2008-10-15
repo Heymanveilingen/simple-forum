@@ -10,8 +10,7 @@ class ForumPost < ActiveRecord::Base
   end
 
   def after_create
-    topic.last_post_by = user_id
-    topic.last_post_at = created_at
-    topic.save(false)
+    topic.update_attributes :last_post_at => created_at,
+                            :last_post_by => user_id
   end
 end

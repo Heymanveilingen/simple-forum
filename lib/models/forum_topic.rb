@@ -13,8 +13,7 @@ class ForumTopic < ActiveRecord::Base
   end
 
   def after_save
-    forum.last_post_by = last_post_by
-    forum.last_post_at = last_post_at
-    forum.save(false)
+    forum.update_attributes :last_post_at => last_post_at,
+                            :last_post_by => last_post_by
   end
 end
